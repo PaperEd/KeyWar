@@ -20,14 +20,16 @@ import retrofit2.Response
  */
 class PracticeActivity : AppCompatActivity() , MainContract.View {
 
+    private val presenter = MainPresenter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
 
-//        button.setOnClickListener { postUserString(edittext.text.toString()) }
 
-//        button2.setOnClickListener { getUserString() }
+        button.setOnClickListener { presenter.postUserString(edittext.text.toString()) }
+
+        button2.setOnClickListener { presenter.getUserString() }
     }
 
 }
