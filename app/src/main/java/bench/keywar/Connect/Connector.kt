@@ -11,7 +11,7 @@ object Connector {
 
     init {
         val retrofit = Retrofit.Builder().run {
-            baseUrl("Url will here")
+            baseUrl("http://192.168.137.203:3000")
             addConverterFactory(GsonConverterFactory.create())
             build()
         }
