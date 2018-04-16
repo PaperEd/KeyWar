@@ -1,4 +1,4 @@
-package bench.keywar.Activity
+package bench.keywar.Main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

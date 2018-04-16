@@ -1,13 +1,8 @@
-package bench.keywar.Contract
+package bench.keywar.Main
 
 import android.util.Log
-import android.widget.Toast
-import bench.keywar.Activity.PracticeActivity
 import bench.keywar.Connect.Connector
 import bench.keywar.Model.SentenceModel
-import bench.keywar.R
-import bench.keywar.R.id.textview
-import kotlinx.android.synthetic.main.activity_practice.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response

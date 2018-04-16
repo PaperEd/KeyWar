@@ -1,4 +1,4 @@
-package bench.keywar.Contract
+package bench.keywar.Main
 
 /**
  * Created by dsm2017 on 2018-04-10.
