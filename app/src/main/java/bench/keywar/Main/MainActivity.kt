@@ -6,6 +6,7 @@ import android.os.Bundle
 import bench.keywar.R
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,8 +14,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         main_btn_dual.setOnClickListener({
-            val sentence_count_btn = Dialog(this)
 
         })
+
     }
 }
+

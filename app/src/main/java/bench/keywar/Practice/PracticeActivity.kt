@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import bench.keywar.Main.MainContract
 import bench.keywar.Main.MainPresenter
 import bench.keywar.R
+import bench.keywar.R.id.*
 import kotlinx.android.synthetic.main.activity_practice.*
 
 /**
@@ -19,9 +20,10 @@ class PracticeActivity : AppCompatActivity() , MainContract.View {
         setContentView(R.layout.activity_practice)
 
 
-        button.setOnClickListener { presenter.postUserString(edittext.text.toString()) }
+//        button.setOnClickListener { presenter.postUserString(edittext.text.toString()) }
+//
+//        button2.setOnClickListener { presenter.getUserString() }
 
-        button2.setOnClickListener { presenter.getUserString() }
     }
 
 }
