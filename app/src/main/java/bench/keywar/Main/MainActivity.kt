@@ -1,6 +1,7 @@
 package bench.keywar.Main
 
 import android.content.Intent
+import android.app.Dialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -17,7 +18,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         with(presenter) {
             main_btn_single.setOnClickListener {
                 showSingleDialog()
@@ -41,5 +41,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun showToast(content: String) {
         Toast.makeText(baseContext, content, Toast.LENGTH_SHORT).show()
+
     }
 }
+

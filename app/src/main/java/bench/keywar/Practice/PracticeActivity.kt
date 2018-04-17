@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import bench.keywar.Main.MainContract
 import bench.keywar.Main.MainPresenter
 import bench.keywar.R
+import bench.keywar.R.id.*
 import kotlinx.android.synthetic.main.activity_practice.*
 
 /**
@@ -15,8 +16,7 @@ class PracticeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
-
-
+        
     }
 
 }
