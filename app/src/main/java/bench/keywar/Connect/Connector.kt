@@ -1,5 +1,8 @@
 package bench.keywar.Connect
 
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,4 +20,18 @@ object Connector {
         }
         api = retrofit.create(API::class.java)
     }
+
+//    fun call(api: Call<Any>) : Response<Any>{
+//        api.execute(object : Call<Any> {
+//            override fun onResponse(call: Call<Any>?, response: Response<Any>?) {
+//                var res = response?.body()
+//
+//            }
+//
+//            override fun onFailure(call: Call<Any>?, t: Throwable?) {
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//            }
+//
+//        })
+//    }
 }

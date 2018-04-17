@@ -10,18 +10,13 @@ import kotlinx.android.synthetic.main.activity_practice.*
 /**
  * Created by dsm2017 on 2018-04-02.
  */
-class PracticeActivity : AppCompatActivity() , MainContract.View {
-
-    private val presenter = MainPresenter()
+class PracticeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practice)
 
 
-        button.setOnClickListener { presenter.postUserString(edittext.text.toString()) }
-
-        button2.setOnClickListener { presenter.getUserString() }
     }
 
 }

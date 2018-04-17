@@ -2,48 +2,28 @@ package bench.keywar.Main
 
 import android.util.Log
 import bench.keywar.Connect.Connector
-import bench.keywar.Model.SentenceModel
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
+import rx.Observable
+import rx.subjects.BehaviorSubject
+import rx.subjects.Subject
 
 /**
  * Created by dsm2017 on 2018-04-10.
  */
-class MainPresenter : MainContract.Presenter {
+class MainPresenter(private val view: MainContract.View) : MainContract.Presenter {
 
-    override fun getUserString() {
-        Connector.api.getUserString()
-                .enqueue(object : retrofit2.Callback<SentenceModel> {
-                    override fun onResponse(call: Call<SentenceModel>?, response: Response<SentenceModel>?) {
-                        var userstring = response!!.body()
-                        for (item in userstring!!.sentences) {
+    override fun getSingleString(sentenceCount: String): ArrayList<String> {
+        view.showToast(sentenceCount)
 
-                        }
-                    }
+        val res = Connector.api.getUserString(sentenceCount).execute().body()
+        val sentences = ArrayList<String>()
 
-                    override fun onFailure(call: Call<SentenceModel>?, t: Throwable?) {
-                    }
-                })
+        return res?.sentences?.mapTo(sentences) { it.sentence }!!
+
     }
 
     override fun postUserString(sentence: String) {
-        val map = hashMapOf("sentence" to sentence)
-        Connector.api.postUserString(map)
-                .enqueue(object : retrofit2.Callback<ResponseBody> {
-                    override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
-                        if (response!!.code() == 200) {
-                            Log.d("DEBUG", "success")
-                        } else {
-                            Log.d("DEBUG", "failed1")
-                        }
-                    }
-
-                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
-                        Log.d("DEBUG", "failed2")
-                    }
-
-                })
     }
-
 }

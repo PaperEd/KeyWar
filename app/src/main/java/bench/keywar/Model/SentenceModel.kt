@@ -12,7 +12,6 @@ class SentenceModel{
 
     inner class Sentences{
         var sentence : String = ""
-        var serial_number : String = ""
     }
 //    private val sentence = listOf<data>()
 }
