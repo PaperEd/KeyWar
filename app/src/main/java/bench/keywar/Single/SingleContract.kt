@@ -1,16 +1,18 @@
 package bench.keywar.Single
 
+import bench.keywar.BaseView
+
 /**
  * Created by PaperEd on 2018-04-16.
  */
 interface SingleContract {
-    interface View {
+    interface View : BaseView{
         fun setSentenceCount(count: Int, total: Int)
 
         fun changeSentence(sentence: String)
     }
 
     interface Presenter {
-
+//        fun checkSentence(original: String, userInput: String , )
     }
 }

@@ -46,4 +46,8 @@ class SingleActivity : AppCompatActivity(), SingleContract.View {
         single_tv_sentence.text = sentence
         single_et_write.text.clear()
     }
+
+    override fun showToast(content: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

@@ -31,12 +31,15 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         dialog.setOnDismissListener {
             if (!dialog.sentenceCount.isNullOrBlank()) {
                 showToast("된다")
-                val res = presenter.getSingleString(dialog.sentenceCount!!)
-                val intent = Intent(baseContext, PracticeActivity::class.java)
-                intent.putStringArrayListExtra("sentences", res)
-                startActivity(intent)
+                presenter.getSingleString(dialog.sentenceCount!!)
             }
         }
+    }
+
+    override fun startSingleActivity(sentences: ArrayList<String>) {
+        val intent = Intent(baseContext, PracticeActivity::class.java)
+        intent.putStringArrayListExtra("sentences", sentences)
+        startActivity(intent)
     }
 
     override fun showToast(content: String) {
