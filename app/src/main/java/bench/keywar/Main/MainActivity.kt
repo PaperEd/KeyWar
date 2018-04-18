@@ -20,18 +20,20 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setContentView(R.layout.activity_main)
         with(presenter) {
             main_btn_single.setOnClickListener {
-                showSingleDialog()
+                showDialog(true)
             }
         }
     }
 
-    override fun showSingleDialog() {
+    override fun showDialog(isSingle: Boolean) {
         val dialog = ChooseCountDialog(this)
         dialog.show()
         dialog.setOnDismissListener {
             if (!dialog.sentenceCount.isNullOrBlank()) {
-                showToast("된다")
-                presenter.getSingleString(dialog.sentenceCount!!)
+                when (isSingle) {
+                    true -> presenter.getSingleString(dialog.sentenceCount!!)
+                    false -> TODO("멀티 연결부분 여기에 넣으세여~~")
+                }
             }
         }
     }
