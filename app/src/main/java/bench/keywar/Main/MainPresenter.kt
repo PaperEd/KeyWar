@@ -11,15 +11,13 @@ import retrofit2.Response
  */
 class MainPresenter(private val view: MainContract.View) : MainContract.Presenter {
 
-    override fun getSingleString(sentenceCount: String) {
+    override fun startSinglePlay(sentenceCount: String) {
         view.showToast(sentenceCount)
-        var res: SentenceModel?
         Connector.api.getUserString(sentenceCount).enqueue(object : Callback<SentenceModel> {
             override fun onResponse(call: Call<SentenceModel>?, response: Response<SentenceModel>?) {
                 if (response?.isSuccessful!!) {
-                    res = response.body()
-                    val sentences = arrayListOf<String>()
-                    res?.sentences!!.mapTo(sentences) { it.sentence }
+                    val res: SentenceModel? = response.body()
+                    val sentences = res!!.getSentences()
                     view.startSingleActivity(sentences)
                 } else {
                     view.showToast("문장을 받아오는데 실패하였습니다.")
