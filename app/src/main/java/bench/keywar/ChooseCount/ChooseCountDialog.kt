@@ -25,19 +25,16 @@ class ChooseCountDialog(context: Context) : Dialog(context) {
         with(ChooseCountPresenter()) {
             chooseCount_btn_10.setOnClickListener {
                 sentenceCount = "10"
-//                sentences = getSingleString(sentenceCount) as ArrayList<String>
                 dismiss()
             }
 
             chooseCount_btn_20.setOnClickListener {
                 sentenceCount = "20"
-//                sentences = getSingleString(sentenceCount) as ArrayList<String>
                 dismiss()
             }
 
             chooseCount_btn_30.setOnClickListener {
                 sentenceCount = "30"
-//                sentences = getSingleString(sentenceCount) as ArrayList<String>
                 dismiss()
             }
         }

@@ -15,6 +15,6 @@ interface MainContract {
     interface Presenter {
         fun postUserString(sentence: String)
 
-        fun getSingleString(sentenceCount: String)
+        fun startSinglePlay(sentenceCount: String)
     }
 }

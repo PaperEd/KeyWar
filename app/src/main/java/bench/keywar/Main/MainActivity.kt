@@ -1,7 +1,6 @@
 package bench.keywar.Main
 
 import android.content.Intent
-import android.app.Dialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         dialog.setOnDismissListener {
             if (!dialog.sentenceCount.isNullOrBlank()) {
                 when (isSingle) {
-                    true -> presenter.getSingleString(dialog.sentenceCount!!)
+                    true -> presenter.startSinglePlay(dialog.sentenceCount!!)
                     false -> TODO("멀티 연결부분 여기에 넣으세여~~")
                 }
             }
