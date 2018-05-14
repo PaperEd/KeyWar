@@ -8,6 +8,8 @@ import bench.keywar.BaseView
 interface MainContract {
     interface View : BaseView{
         fun showSingleDialog()
+
+        fun showDualDialog()
     }
 
     interface Presenter{

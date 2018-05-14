@@ -1,6 +1,7 @@
 package bench.keywar.Connect
 
 import bench.keywar.Model.SentenceModel
+import com.google.gson.annotations.SerializedName
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -11,7 +12,7 @@ import retrofit2.http.*
 interface API {
     @POST("/single/sentence")
     @FormUrlEncoded
-    fun postUserString(@FieldMap map: HashMap<String, String>): Call<ResponseBody>
+    fun postUserString(@Field("sentence") sentence : String ): Call<ResponseBody>
 
     @GET("/single/sentence/{count}")
     fun getUserString(@Path("count") count: String): Call<SentenceModel>
