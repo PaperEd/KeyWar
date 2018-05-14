@@ -6,10 +6,16 @@ import bench.keywar.BaseView
  * Created by dsm2017 on 2018-04-10.
  */
 interface MainContract {
-    interface View : BaseView {
+
+    interface View : BaseView{
+        fun showSingleDialog()
+
+        fun showDualDialog()
+
         fun showDialog(isSingle : Boolean)
 
         fun startSingleActivity(sentences: ArrayList<String>)
+
     }
 
     interface Presenter {

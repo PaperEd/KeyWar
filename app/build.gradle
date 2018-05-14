@@ -34,6 +34,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+    compile ('io.socket:socket.io-client:1.0.0') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -45,3 +49,4 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:3.0.1'
     androidTestCompile 'org.mockito:mockito-core:2.9.0'
 }
+
