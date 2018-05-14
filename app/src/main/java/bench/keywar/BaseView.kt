@@ -5,4 +5,5 @@ package bench.keywar
  */
 interface BaseView {
     fun showToast(content: String)
+    fun finishActivity()
 }

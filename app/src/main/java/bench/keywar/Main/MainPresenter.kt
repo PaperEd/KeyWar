@@ -1,7 +1,7 @@
 package bench.keywar.Main
 
 import bench.keywar.Connect.Connector
-import bench.keywar.Model.SentenceModel
+import bench.keywar.Model.SingleSentenceModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,19 +13,18 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
 
     override fun startSinglePlay(sentenceCount: String) {
         view.showToast(sentenceCount)
-        Connector.api.getUserString(sentenceCount).enqueue(object : Callback<SentenceModel> {
-            override fun onResponse(call: Call<SentenceModel>?, response: Response<SentenceModel>?) {
+        Connector.api.getUserString(sentenceCount).enqueue(object : Callback<SingleSentenceModel> {
+            override fun onResponse(call: Call<SingleSentenceModel>?, response: Response<SingleSentenceModel>?) {
                 if (response?.isSuccessful!!) {
-                    val res: SentenceModel? = response.body()
-                    val sentences = res!!.getSentences()
-                    view.startSingleActivity(sentences)
+                    val res: SingleSentenceModel? = response.body()
+                    view.startSingleActivity(res!!)
                 } else {
                     view.showToast("문장을 받아오는데 실패하였습니다.")
                 }
             }
 
-            override fun onFailure(call: Call<SentenceModel>?, t: Throwable?) {
-                view.showToast("문장을 받아오는데 실패하였습니다.")
+            override fun onFailure(call: Call<SingleSentenceModel>?, t: Throwable?) {
+                view.showToast("인터넷 연결 상태를 확인해주세요.")
             }
 
         })

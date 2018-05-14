@@ -1,7 +1,6 @@
 package bench.keywar.Connect
 
-import bench.keywar.Model.SentenceModel
-import com.google.gson.annotations.SerializedName
+import bench.keywar.Model.SingleSentenceModel
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -15,5 +14,5 @@ interface API {
     fun postUserString(@Field("sentence") sentence : String ): Call<ResponseBody>
 
     @GET("/single/sentence/{count}")
-    fun getUserString(@Path("count") count: String): Call<SentenceModel>
+    fun getUserString(@Path("count") count: String): Call<SingleSentenceModel>
 }

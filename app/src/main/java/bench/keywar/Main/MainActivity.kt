@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 import android.widget.Toast
 import bench.keywar.ChooseCount.ChooseCountDialog
+import bench.keywar.Model.SingleSentenceModel
 import bench.keywar.Dual.DualMakeSentenceActivity
 import bench.keywar.Practice.PracticeActivity
 import bench.keywar.R
@@ -76,14 +77,20 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    override fun startSingleActivity(sentences: ArrayList<String>) {
+    override fun startSingleActivity(singleSentenceModel: SingleSentenceModel) {
         val intent = Intent(baseContext, PracticeActivity::class.java)
-        intent.putStringArrayListExtra("sentences", sentences)
+        val bundle = Bundle()
+        bundle.putSerializable("singleSentenceModel", singleSentenceModel)
+        intent.putExtras(bundle)
         startActivity(intent)
     }
 
     override fun showToast(content: String) {
         Toast.makeText(baseContext, content, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun finishActivity() {
+        finish()
     }
 }
 
