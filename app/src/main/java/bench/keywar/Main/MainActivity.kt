@@ -1,18 +1,15 @@
 package bench.keywar.Main
 
+import android.app.Dialog
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.Toast
 import bench.keywar.ChooseCount.ChooseCountDialog
-import bench.keywar.Dual.DualActivity
-import bench.keywar.Dual.DualContract
 import bench.keywar.Dual.DualMakeSentenceActivity
 import bench.keywar.Practice.PracticeActivity
 import bench.keywar.R
-import kotlinx.android.synthetic.main.activity_dual.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_sentence_count.*
 
@@ -65,8 +62,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         var window  = dialog.window.apply { setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT) }
     }
-
-    override fun showSingleDialog() {}
 
     override fun showDialog(isSingle: Boolean) {
         val dialog = ChooseCountDialog(this)

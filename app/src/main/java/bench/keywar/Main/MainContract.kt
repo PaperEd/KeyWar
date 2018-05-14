@@ -7,12 +7,11 @@ import bench.keywar.BaseView
  */
 interface MainContract {
 
-    interface View : BaseView{
-        fun showSingleDialog()
+    interface View : BaseView {
 
         fun showDualDialog()
 
-        fun showDialog(isSingle : Boolean)
+        fun showDialog(isSingle: Boolean)
 
         fun startSingleActivity(sentences: ArrayList<String>)
 
