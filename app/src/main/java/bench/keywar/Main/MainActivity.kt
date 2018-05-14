@@ -1,7 +1,6 @@
 package bench.keywar.Main
 
 import android.content.Intent
-import android.app.Dialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
@@ -29,13 +28,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setContentView(R.layout.activity_main)
         with(presenter) {
             main_btn_single.setOnClickListener {
-                showSingleDialog()
+                showDialog(true)
             }
             main_btn_dual.setOnClickListener {
                 showDualDialog()
             }
         }
     }
+
 
     override fun showDualDialog() {
         val dialog = Dialog(this)
@@ -66,18 +66,25 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         var window  = dialog.window.apply { setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT) }
     }
 
-    override fun showSingleDialog() {
+    override fun showSingleDialog() {}
+
+    override fun showDialog(isSingle: Boolean) {
         val dialog = ChooseCountDialog(this)
         dialog.show()
         dialog.setOnDismissListener {
             if (!dialog.sentenceCount.isNullOrBlank()) {
-                showToast("된다")
-                val res = presenter.getSingleString(dialog.sentenceCount!!)
-                val intent = Intent(baseContext, PracticeActivity::class.java)
-                intent.putStringArrayListExtra("sentences", res)
-                startActivity(intent)
+                when (isSingle) {
+                    true -> presenter.startSinglePlay(dialog.sentenceCount!!)
+                    false -> TODO("멀티 연결부분 여기에 넣으세여~~")
+                }
             }
         }
+    }
+
+    override fun startSingleActivity(sentences: ArrayList<String>) {
+        val intent = Intent(baseContext, PracticeActivity::class.java)
+        intent.putStringArrayListExtra("sentences", sentences)
+        startActivity(intent)
     }
 
     override fun showToast(content: String) {

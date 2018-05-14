@@ -1,9 +1,9 @@
 package bench.keywar.Main
 
-import android.util.Log
 import bench.keywar.Connect.Connector
-import okhttp3.ResponseBody
+import bench.keywar.Model.SentenceModel
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 /**
@@ -11,14 +11,24 @@ import retrofit2.Response
  */
 class MainPresenter(private val view: MainContract.View) : MainContract.Presenter {
 
-    override fun getSingleString(sentenceCount: String): ArrayList<String> {
+    override fun startSinglePlay(sentenceCount: String) {
         view.showToast(sentenceCount)
+        Connector.api.getUserString(sentenceCount).enqueue(object : Callback<SentenceModel> {
+            override fun onResponse(call: Call<SentenceModel>?, response: Response<SentenceModel>?) {
+                if (response?.isSuccessful!!) {
+                    val res: SentenceModel? = response.body()
+                    val sentences = res!!.getSentences()
+                    view.startSingleActivity(sentences)
+                } else {
+                    view.showToast("문장을 받아오는데 실패하였습니다.")
+                }
+            }
 
-        val res = Connector.api.getUserString(sentenceCount).execute().body()
-        val sentences = ArrayList<String>()
+            override fun onFailure(call: Call<SentenceModel>?, t: Throwable?) {
+                view.showToast("문장을 받아오는데 실패하였습니다.")
+            }
 
-        return res?.sentences?.mapTo(sentences) { it.sentence }!!
-
+        })
     }
 
     override fun postUserString(sentence: String) {
