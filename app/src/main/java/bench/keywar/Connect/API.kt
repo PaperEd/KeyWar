@@ -11,7 +11,7 @@ import retrofit2.http.*
 interface API {
     @POST("/single/sentence")
     @FormUrlEncoded
-    fun postUserString(@FieldMap map: HashMap<String, String>): Call<ResponseBody>
+    fun postUserString(@Field("sentence") sentence : String ): Call<ResponseBody>
 
     @GET("/single/sentence/{count}")
     fun getUserString(@Path("count") count: String): Call<SingleSentenceModel>

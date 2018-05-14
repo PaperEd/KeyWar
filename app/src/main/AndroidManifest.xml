@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Single.SingleActivity"></activity>
+        <activity android:name=".Dual.DualActivity"/>
+        <activity android:name=".Dual.DualMakeSentenceActivity"/>
     </application>
 
 </manifest>
