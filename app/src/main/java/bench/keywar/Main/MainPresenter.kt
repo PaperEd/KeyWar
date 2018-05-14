@@ -17,15 +17,14 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
             override fun onResponse(call: Call<SentenceModel>?, response: Response<SentenceModel>?) {
                 if (response?.isSuccessful!!) {
                     val res: SentenceModel? = response.body()
-                    val sentences = res!!.getSentences()
-                    view.startSingleActivity(sentences)
+                    view.startSingleActivity(res!!)
                 } else {
                     view.showToast("문장을 받아오는데 실패하였습니다.")
                 }
             }
 
             override fun onFailure(call: Call<SentenceModel>?, t: Throwable?) {
-                view.showToast("문장을 받아오는데 실패하였습니다.")
+                view.showToast("인터넷 연결 상태를 확인해주세요.")
             }
 
         })
