@@ -12,7 +12,7 @@ class SentenceModel : Serializable {
     @SerializedName("sentence")
     lateinit var sentences: List<Sentences>
 
-    var size = 0
+    var size = sentences.size
 
     var index = 0
 

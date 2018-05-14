@@ -31,9 +31,8 @@ class SingleActivity : AppCompatActivity(), SingleContract.View {
     private fun init() {
         val intent = intent
         val sentenceModel = intent.getSerializableExtra("sentenceModel") as SentenceModel
-        setSentenceCount(0, sentenceModel.size)
-        presenter = SinglePresenter(this,sentenceModel)
-//        presenter.setSentencesModel(sentenceModel)
+        presenter = SinglePresenter(this, sentenceModel)
+        presenter.setSentence()
     }
 
     override fun setSentenceCount(index: Int, totalSentence: Int) {

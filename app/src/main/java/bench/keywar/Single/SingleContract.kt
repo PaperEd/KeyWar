@@ -15,7 +15,5 @@ interface SingleContract {
 
     interface Presenter {
         fun checkSentence(userInput: String)
-
-        fun setSentencesModel(sentenceModel: SentenceModel)
     }
 }
