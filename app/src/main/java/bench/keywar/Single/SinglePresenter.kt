@@ -1,23 +1,24 @@
 package bench.keywar.Single
 
-import bench.keywar.Model.SentenceModel
+import bench.keywar.Model.SingleSentenceModel
 
 /**
  * Created by PaperEd on 2018-04-17.
  */
-class SinglePresenter(val view: SingleContract.View, val sentenceModel: SentenceModel) : SingleContract.Presenter {
-    var sentence: String = sentenceModel.getCurrentSentence()
+class SinglePresenter(val view: SingleContract.View, val singleSentenceModel: SingleSentenceModel) : SingleContract.Presenter {
+    var sentence: String = singleSentenceModel.getCurrentSentence()
     override fun checkSentence(userInput: String) {
-        if (sentence == userInput && sentenceModel.index < sentenceModel.size) {
+        if (sentence == userInput && singleSentenceModel.index < singleSentenceModel.size) {
             setSentence()
-        } else if (sentence == userInput && sentenceModel.index >= sentenceModel.size) {
+        } else if (sentence == userInput && singleSentenceModel.index >= singleSentenceModel.size) {
 //            TODO("끝내는 로직 추가하기")
+            view.finishActivity()
         }
     }
 
     fun setSentence() {
-        sentence = sentenceModel.getCurrentSentence()
+        sentence = singleSentenceModel.getCurrentSentence()
         view.changeSentence(sentence)
-        view.setSentenceCount(sentenceModel.index, sentenceModel.size)
+        view.setSentenceCount(singleSentenceModel.index, singleSentenceModel.size)
     }
 }

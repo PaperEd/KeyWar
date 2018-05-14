@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import bench.keywar.Model.SentenceModel
+import bench.keywar.Model.SingleSentenceModel
 import bench.keywar.R
 import kotlinx.android.synthetic.main.activity_single.*
 
 class SingleActivity : AppCompatActivity(), SingleContract.View {
+
     //    val presenter = SinglePresenter(this)
     lateinit var presenter: SinglePresenter
 
@@ -30,13 +31,14 @@ class SingleActivity : AppCompatActivity(), SingleContract.View {
 
     private fun init() {
         val intent = intent
-        val sentenceModel = intent.getSerializableExtra("sentenceModel") as SentenceModel
+        val sentenceModel = intent.getSerializableExtra("singleSentenceModel") as SingleSentenceModel
         presenter = SinglePresenter(this, sentenceModel)
         presenter.setSentence()
     }
 
     override fun setSentenceCount(index: Int, totalSentence: Int) {
         single_tv_count.text = "$index / $totalSentence"
+        single_et_write.setText("")
     }
 
     override fun changeSentence(sentence: String) {
@@ -46,5 +48,9 @@ class SingleActivity : AppCompatActivity(), SingleContract.View {
 
     override fun showToast(content: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun finishActivity() {
+        finish()
     }
 }

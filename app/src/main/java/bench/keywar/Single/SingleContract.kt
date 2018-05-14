@@ -1,7 +1,6 @@
 package bench.keywar.Single
 
 import bench.keywar.BaseView
-import bench.keywar.Model.SentenceModel
 
 /**
  * Created by PaperEd on 2018-04-16.

@@ -8,7 +8,7 @@ import java.io.Serializable
  */
 
 @SuppressWarnings("serial")
-class SentenceModel : Serializable {
+class SingleSentenceModel : Serializable {
     @SerializedName("sentence")
     lateinit var sentences: List<Sentences>
 
