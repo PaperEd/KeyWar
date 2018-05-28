@@ -8,11 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import bench.keywar.ChooseCount.ChooseCountDialog
 import bench.keywar.Model.SingleSentenceModel
-import bench.keywar.Dual.DualMakeSentenceActivity
 import bench.keywar.Practice.PracticeActivity
 import bench.keywar.R
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.dialog_sentence_count.*
 
 class MainActivity : AppCompatActivity(), MainContract.View {
 

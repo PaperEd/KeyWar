@@ -4,14 +4,16 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.TextView
 import android.widget.Toast
 import bench.keywar.R
 import kotlinx.android.synthetic.main.activity_dual.*
-import java.util.*
 
 class DualActivity : AppCompatActivity(), DualContract.View {
+    override fun finishActivity() {
 
-
+    }
+    val dualPresenter = DualPresenter(this)
     var sentence_count_now  = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,10 +41,13 @@ class DualActivity : AppCompatActivity(), DualContract.View {
         })
 
         dual_next_btn.setOnClickListener{
-            if(sentence_count_total > sentence_count_now) {
-                sentence_count_now++
-                dual_count_now.text = sentence_count_now.toString()
-                dual_sentence_tv.text = "text"
+            if(sentence_count_total > sentence_count_now && dual_sentence_et.text == dual_sentence_tv.text) {
+                    sentence_count_now++
+                    dual_count_now.text = sentence_count_now.toString()
+                    dual_sentence_tv.text = dualPresenter.getNextString().toString()
+                    dual_sentence_et.text.clear()
+            } else {
+                showToast("문장을 다시 입력해주세요.")
                 dual_sentence_et.text.clear()
             }
 

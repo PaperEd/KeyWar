@@ -14,15 +14,25 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import javax.security.auth.callback.Callback
 
-class DualPresenter(val view : DualContract.View) : DualContract.Presenter{
+class DualPresenter (private val context: Context) : DualContract.Presenter{
     override fun connect() {
         val sokect = IO.socket("URL")
         sokect.connect()
-                .on(Socket.EVENT_CONNECT, {Emitter.Listener {
-                    view.showToast("asdfsasdff")
-                }})
-                .on(Socket.EVENT_DISCONNECT,{view.showToast(" ")})
+                .on(Socket.EVENT_CONNECT,{ Toast.makeText(context, "connected",Toast.LENGTH_SHORT).show()
+                onConnect })
+                .on(Socket.EVENT_DISCONNECT,{ Toast.makeText(context, "disconnected", Toast.LENGTH_SHORT).show() })
     }
+
+    override fun getNextString() {
+        // return string
+    }
+
+    var onConnect : Emitter.Listener = object : Emitter.Listener{
+        override fun call(vararg args: Any?) {
+
+        }
+    }
+
 
     override fun postUserString(sentence: String) {
         Connector.api.postUserString(sentence).enqueue(object : retrofit2.Callback<ResponseBody> {

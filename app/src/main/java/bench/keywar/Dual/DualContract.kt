@@ -11,6 +11,8 @@ interface DualContract {
     fun connect()
 
     fun postUserString(sentence : String)
+
+    fun getNextString()
     }
 
 }
